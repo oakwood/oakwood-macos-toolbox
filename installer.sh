@@ -47,6 +47,17 @@ on_start() {
 
 }
 
+install_command_line_tools() {
+  # Note:There's not need to install XCode tools on Linux
+  if [ `uname` == 'Linux' ]; then
+    return
+  fi
+
+  ./scripts/xcode.sh
+
+  finish
+}
+
 main() {
     # Ensure that the following actions are made relative to this file's path.
     cd "$(dirname "${BASH_SOURCE[0]}")" \
@@ -60,6 +71,8 @@ main() {
     fi
 
     on_start
+
+    install_command_line_tools
 }
 
 main
