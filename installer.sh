@@ -58,6 +58,27 @@ install_command_line_tools() {
   finish
 }
 
+install_git() {
+  print_info "Trying to detect installed Git..."
+
+  if ! cmd_exists "git"; then
+    print_info "Seems like you don't have Git installed!"
+
+    ask_for_confirmation "Do you agree to proceed with Git installation?"
+
+    if ! answer_is_yes; then
+      return
+    fi
+
+    ./scripts/macos/git.sh
+
+  else
+    print_info "You already have Git installed. Skipping..."
+  fi
+
+  finish
+}
+
 main() {
     # Ensure that the following actions are made relative to this file's path.
     cd "$(dirname "${BASH_SOURCE[0]}")" \
