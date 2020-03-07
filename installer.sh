@@ -33,6 +33,54 @@ download_utils() {
 	return 1
 }
 
+print_prompt() {
+	printf "\n\n"
+	print_question "What you want to do?\n"
+
+	PS3="Enter your choice (must be a number): "
+
+	MENU_OPTIONS=("All" "Install Xcode Command Line Tools" "Install Homebrew" "Install Git and Setup SSH" "Clone Oakwood's macOS Toolbox repo" "Bootstrap macOS Environment (Apps,CLI Tools, Nodejs, NVM)" "Quit")
+
+	select opt in "${MENU_OPTIONS[@]}"; do
+		case $opt in
+			"All")
+				all
+				break
+				;;
+			"Install Xcode Command Line Tools")
+				install_git
+				install_command_line_tools
+				break
+				;;
+			"Install Homebrew")
+				install_package_manager
+				break
+				;;
+			"Install Git and Setup SSH")
+				install_git
+				break
+				;;
+			"Clone Oakwood's macOS Toolbox repo")
+				clone_oakwood_macos_toolbox_repo
+				break
+				;;
+			"Bootstrap macOS Environment (Apps,CLI Tools, Nodejs, NVM)")
+				install_package_manager
+				clone_oakwood_macos_toolbox_repo
+				bootstrap_os
+				break
+				;;
+			"Quit")
+				break
+				;;
+			*)
+				print_error "Invalid option!"
+				PS3=$( echo -e $BLUE"Enter a valid choice? ") # this displays the common prompt
+				;;
+		esac
+	done
+}
+
 on_start() {
 
 	print_main_header
@@ -60,7 +108,7 @@ install_command_line_tools() {
 }
 
 install_git() {
-  print_info "Trying to detect installed Git..."
+	print_info "Trying to detect installed Git..."
 
   if ! cmd_exists "git"; then
 	print_info "Seems like you don't have Git installed!"
@@ -68,16 +116,16 @@ install_git() {
 	ask_for_confirmation "Do you agree to proceed with Git installation?"
 
 	if ! answer_is_yes; then
-	  return
+		return
 	fi
 
 	. "scripts/macos/git.sh"
 
-  else
-	print_info "You already have Git installed. Skipping..."
-  fi
+	else
+		print_info "You already have Git installed. Skipping..."
+	fi
 
-  finish
+	finish
 }
 
 install_package_manager() {
@@ -151,6 +199,23 @@ bootstrap_os() {
   finish
 }
 
+all() {
+	install_command_line_tools
+	install_git
+	install_package_manager
+	clone_oakwood_macos_toolbox_repo
+	bootstrap_os
+
+	FAILED_COMMAND=$(fc -ln -1)
+
+	if [ $? -eq 0 ]; then
+		print_success "Done."
+		command vim -u NONE $HOME/.{gitconfig}.local
+	else
+		print_error "Something went wrong, [ Failed on: $FAILED_COMMAND ]"
+	fi
+}
+
 main() {
 	# Ensure that the following actions are made relative to this file's path.
 	cd "$(dirname "${BASH_SOURCE[0]}")" \
@@ -164,13 +229,7 @@ main() {
 	fi
 
 	on_start
-
-	install_command_line_tools
-	install_git
-	install_package_manager
-	clone_oakwood_macos_toolbox_repo
-	bootstrap_os
-
+	print_prompt
 	on_finish
 }
 
