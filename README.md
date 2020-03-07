@@ -22,7 +22,7 @@ That's it! 🎉, then the process does a few things:
 * Install and configure `Git` if it's not installed in your machine.
 * Download `Homebrew` our main macOS dependency manager.
 * Clone `oakwood-macos-toolbox` repo on your computer (by default it will suggest `~/oakwood-macos-toolbox`).
-* Boostrape your environment by Installing CLI Tools and Applications for your [`macOS`](scripts/bootstrap.sh), [`Nodejs`](scripts/nodejs.zsh) including global packages.
+* Boostrape your environment by Installing CLI Tools and Applications for your [`macOS`](scripts/macos/bootstrap.sh), [`Nodejs`](scripts/macos/nodejs.zsh) including global packages.
 
 License
 -------
