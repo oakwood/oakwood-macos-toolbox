@@ -15,3 +15,16 @@ To set up the `oakwood macOS toolbox`, run the appropriate snippet in the termin
 | `curl`     | `bash -c "$(curl -fsSL https://raw.githubusercontent.com/oakwood/oakwood-macos-toolbox/master/installer.sh)"`                           |
 | `wget`     | `bash -c "$(wget https://raw.githubusercontent.com/oakwood/oakwood-macos-toolbox/master/installer.sh -O -)"`                            |
 | `git`      | `git clone git@github.com:oakwood/oakwood-macos-toolbox.git ~/oakwood-macos-toolbox && source ~/oakwood-macos-toolbox/installer.sh`     |
+
+That's it! 🎉, then the process does a few things:
+
+* Install `Xcode` Commandline tools
+* Install and configure `Git` if it's not installed in your machine.
+* Download `Homebrew` our main macOS dependency manager.
+* Clone `oakwood-macos-toolbox` repo on your computer (by default it will suggest `~/oakwood-macos-toolbox`).
+* Boostrape your environment by Installing CLI Tools and Applications for your [`macOS`](scripts/bootstrap.sh), [`Nodejs`](scripts/nodejs.zsh) including global packages.
+
+License
+-------
+Copyright © 2020 Oakwood
+Licensed under the MIT [`license`](LICENSE).
