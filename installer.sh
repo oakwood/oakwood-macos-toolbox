@@ -134,19 +134,21 @@ clone_oakwood_macos_toolbox_repo() {
   finish
 }
 
-bootstrap_macOS_apps() {
-  if [[ -d $OAKWOOD_TOOLBOX ]]; then
-    ask_for_confirmation "Would you like to bootstrap your environment by Installing Oakwood macOS Toolbox?"
+bootstrap_os() {
+	if [[ -d $OAKWOOD_TOOLBOX ]]; then
+		ask_for_confirmation "Would you like to bootstrap your environment by Installing Oakwood macOS Toolbox?"
 
-    if ! answer_is_yes; then
-      break
-    fi
+		if ! answer_is_yes; then
+			break
+		fi
 
-    cd "$OAKWOOD_TOOLBOX" && ./scripts/macos/bootstrap.sh
+		cd "$OAKWOOD_TOOLBOX" &&
+			. "./scripts/macos/bootstrap.sh" &&
+			. "./scripts/macos/nodejs.sh"
 
-  else
-    print_warning "Make sure clone Oakwood's macOS Toolbox repo. Skipping ... 💨!"
-  fi
+	else
+		print_warning "Make sure clone Oakwood's macOS Toolbox repo. Skipping ... 💨!"
+	fi
 
   finish
 }
