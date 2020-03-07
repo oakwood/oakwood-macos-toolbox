@@ -119,3 +119,27 @@ print_node_header() {
     print_in_green '        | $$ \  $$|  $$$$$$/|  $$$$$$$|  $$$$$$$|  $$$$$$/|  $$$$$$/        \n'
     print_in_green '        |__/  \__/ \______/  \_______/ \_______/ \______/  \______/       \n\n'
 }
+
+ask_for_confirmation() {
+    print_question "$1 (y/n) "
+    read -r -n 1
+    printf "\n"
+}
+
+ask_for_sudo_permission() {
+    # Ask for the administrator password upfront.
+    sudo -v &> /dev/null
+
+    # Keep-alive: update existing `sudo` time stamp until the script has finished.
+    while true; do
+        sudo -n true
+        sleep 60
+        kill -0 "$$" || exit
+    done &> /dev/null &
+}
+
+answer_is_yes() {
+    [[ "$REPLY" =~ ^[Yy]$ ]] \
+        && return 0 \
+        || return 1
+}
