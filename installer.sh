@@ -79,6 +79,26 @@ install_git() {
   finish
 }
 
+install_package_manager() {
+  if [ `uname` == 'Darwin' ]; then
+
+    print_info "Trying to detect if Homebrew is installed..."
+
+    if ! cmd_exists "brew"; then
+      print_warning "Seems like you don't have Homebrew installed!"
+      print_info "Installing Homebrew...This may take a while"
+
+      ./scripts/macos/homebrew.sh
+
+    else
+      print_info "You already have Homebrew installed, nothing to do here skipping ... 💨"
+    fi
+
+  fi
+
+  finish
+}
+
 main() {
     # Ensure that the following actions are made relative to this file's path.
     cd "$(dirname "${BASH_SOURCE[0]}")" \
@@ -94,6 +114,8 @@ main() {
     on_start
 
     install_command_line_tools
+    install_package_manager
+
     on_finish
 }
 
