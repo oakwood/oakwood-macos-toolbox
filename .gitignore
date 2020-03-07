@@ -1,0 +1,19 @@
+# vscode
+.vscode
+
+# idea
+.idea/
+
+# vim
+.*.sw[a-p]
+
+# os related files
+.idea
+*.log
+.DS_STORE
+
+*.un~
+*.zwc
+!.ignore
+*.old
+log.*.txt
