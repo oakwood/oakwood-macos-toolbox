@@ -315,3 +315,7 @@ brew_update() {
 brew_upgrade() {
     execute "brew upgrade" "Homebrew (upgrade)"
 }
+
+is_git_repository() {
+    git rev-parse &> /dev/null
+}
