@@ -91,6 +91,12 @@ finish() {
   sleep 1
 }
 
+on_finish() {
+  print_in_green   "    Setup was successfully done! \n\n"
+  print_on_finish_header
+  print_warning    "    P.S: Don't forget to restart your terminal ;)"
+}
+
 # Header Banner
 print_main_header() {
     print_in_green '          /$$$$$$            /$$                                               /$$         \n'
@@ -124,6 +130,20 @@ print_node_header() {
     print_in_green '        | $$\  $$$| $$  | $$| $$  | $$| $$_____/| $$  | $$ /$$  \ $$        \n'
     print_in_green '        | $$ \  $$|  $$$$$$/|  $$$$$$$|  $$$$$$$|  $$$$$$/|  $$$$$$/        \n'
     print_in_green '        |__/  \__/ \______/  \_______/ \_______/ \______/  \______/       \n\n'
+}
+
+print_on_finish_header() {
+    print_in_green '         /$$   /$$                                                /$$$$$$                  /$$ /$$                     /$$          \n'
+    print_in_green '        | $$  | $$                                               /$$__  $$                | $$|__/                    | $$          \n'
+    print_in_green '        | $$  | $$  /$$$$$$   /$$$$$$   /$$$$$$  /$$   /$$      | $$  \__/  /$$$$$$   /$$$$$$$ /$$ /$$$$$$$   /$$$$$$ | $$          \n'
+    print_in_green '        | $$$$$$$$ |____  $$ /$$__  $$ /$$__  $$| $$  | $$      | $$       /$$__  $$ /$$__  $$| $$| $$__  $$ /$$__  $$| $$          \n'
+    print_in_green '        | $$__  $$  /$$$$$$$| $$  \ $$| $$  \ $$| $$  | $$      | $$      | $$  \ $$| $$  | $$| $$| $$  \ $$| $$  \ $$|__/          \n'
+    print_in_green '        | $$  | $$ /$$__  $$| $$  | $$| $$  | $$| $$  | $$      | $$    $$| $$  | $$| $$  | $$| $$| $$  | $$| $$  | $$              \n'
+    print_in_green '        | $$  | $$|  $$$$$$$| $$$$$$$/| $$$$$$$/|  $$$$$$$      |  $$$$$$/|  $$$$$$/|  $$$$$$$| $$| $$  | $$|  $$$$$$$ /$$          \n'
+    print_in_green '        |__/  |__/ \_______/| $$____/ | $$____/  \____  $$       \______/  \______/  \_______/|__/|__/  |__/ \____  $$|__/          \n'
+    print_in_green '                            | $$      | $$       /$$  | $$                                                   /$$  \ $$              \n'
+    print_in_green '                            | $$      | $$      |  $$$$$$/                                                  |  $$$$$$/              \n'
+    print_in_green '                            |__/      |__/       \______/                                                    \______/           \n\n\n'
 }
 
 ask_for_confirmation() {

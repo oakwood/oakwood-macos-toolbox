@@ -94,6 +94,7 @@ main() {
     on_start
 
     install_command_line_tools
+    on_finish
 }
 
 main
