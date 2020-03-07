@@ -99,6 +99,58 @@ install_package_manager() {
   finish
 }
 
+clone_oakwood_macos_toolbox_repo() {
+  print_question "Trying to detect if Oakwwd's macOS Toolbox is installed in $OAKWOOD_TOOLBOX..."
+
+  if [ ! -d $OAKWOOD_TOOLBOX ]; then
+    print_info "Seems like you don't have Oakwood's macOS Toolbox clone!"
+
+    ask_for_confirmation "Do you agree to proceed with Oakwood's macOS Toolbox installation?"
+
+    if ! answer_is_yes; then
+      return
+    fi
+
+    print_info "Cloning Oakwood's macOS Toolbox"
+    git clone --recursive "$GITHUB_REPO_URL_BASE.git" $TOOLBOX
+
+    # Setup repo origin & mirrors
+    cd "$OAKWOOD_TOOLBOX" &&
+      git remote set-url origin git@github.com:oakwood/oakwood-macos-toolbox.git
+
+  else
+    print_info "You already have Oakwood's macOS Toolbox installed. Skipping..."
+    print_info "Pulling latest update..."
+
+    cd "$OAKWOOD_TOOLBOX" &&
+      git stash -u &&
+      git checkout master &&
+      git reset --hard origin/master &&
+      git submodule update --init --recursive &&
+      git checkout - &&
+      git stash pop
+  fi
+
+  finish
+}
+
+bootstrap_macOS_apps() {
+  if [[ -d $OAKWOOD_TOOLBOX ]]; then
+    ask_for_confirmation "Would you like to bootstrap your environment by Installing Oakwood macOS Toolbox?"
+
+    if ! answer_is_yes; then
+      break
+    fi
+
+    cd "$OAKWOOD_TOOLBOX" && ./scripts/macos/bootstrap.sh
+
+  else
+    print_warning "Make sure clone Oakwood's macOS Toolbox repo. Skipping ... 💨!"
+  fi
+
+  finish
+}
+
 main() {
     # Ensure that the following actions are made relative to this file's path.
     cd "$(dirname "${BASH_SOURCE[0]}")" \
