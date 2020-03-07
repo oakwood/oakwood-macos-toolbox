@@ -170,6 +170,10 @@ answer_is_yes() {
         || return 1
 }
 
+get_answer() {
+    printf "%s" "$REPLY"
+}
+
 kill_all_subprocesses() {
     local i=""
 
