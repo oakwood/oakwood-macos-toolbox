@@ -85,6 +85,12 @@ print_result() {
 
 }
 
+# Finish reporter
+finish() {
+  print_success "Done."
+  sleep 1
+}
+
 # Header Banner
 print_main_header() {
     print_in_green '          /$$$$$$            /$$                                               /$$         \n'
