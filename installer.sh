@@ -1,14 +1,37 @@
 #!/bin/bash
 
-cd "$(dirname "${BASH_SOURCE[0]}")" \
-    && . "./scripts/utils.sh"
-
 declare -r GITHUB_REPOSITORY="oakwood/oakwood-macos-toolbox"
 declare -r GITHUB_REPO_URL_BASE="https://github.com/$GITHUB_REPOSITORY"
 declare -r HOMEBREW_INSTALLER_URL="https://raw.githubusercontent.com/Homebrew/install/master/install"
 declare -r OAKWOOD_TOOLBOX_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/scripts/utils.sh"
 
 declare -r OAKWOOD_TOOLBOX="$HOME/oakwood-macos-toolbox"
+
+download() {
+    local url="$1"
+    local output="$2"
+
+    if command -v "curl" &> /dev/null; then
+        curl -LsSo "$output" "$url" &> /dev/null
+        return $?
+
+    elif command -v "wget" &> /dev/null; then
+        wget -qO "$output" "$url" &> /dev/null
+        return $?
+    fi
+    return 1
+}
+
+download_utils() {
+    local tmpFile=""
+    tmpFile="$(mktemp /tmp/XXXXX)"
+
+    download "$TOOLBOX_UTILS_URL" "$tmpFile" \
+        && . "$tmpFile" \
+        && rm -rf "$tmpFile" \
+        && return 0
+   return 1
+}
 
 on_start() {
 
@@ -25,7 +48,18 @@ on_start() {
 }
 
 main() {
-  on_start
+    # Ensure that the following actions are made relative to this file's path.
+    cd "$(dirname "${BASH_SOURCE[0]}")" \
+        || exit 1
+
+    # Load utils
+    if [ -x "scripts/utils.sh" ]; then
+        . "scripts/utils.sh" || exit 1
+    else
+        download_utils || exit 1
+    fi
+
+    on_start
 }
 
 main
