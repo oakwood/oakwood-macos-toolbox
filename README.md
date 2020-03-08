@@ -6,7 +6,7 @@
 
 ### What is Oakwood Toolbox?
 
-The Oakwood Toolbox makes managing your development tools almost effortless! Highly recommended
+The Oakwood Toolbox makes managing your development environment tools almost effortless! Highly recommended
 
 - Download and configure `Homebrew` as dependency manager.
 - Bootstrap your developmnent environment by installing Apps and CLI tools for your [`macOS`](scripts/macos/bootstrap.sh), [`Nodejs`](scripts/macos/nodejs.sh) including global packages.
