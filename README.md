@@ -4,8 +4,8 @@
 
 > Manage your tools the easy way
 
-What is Oakwood Toolbox?
------------------------
+### What is Oakwood Toolbox?
+
 The Oakwood Toolbox makes managing your development tools almost effortless! Highly recommended
 
 - Download and configure `Homebrew` as dependency manager.
@@ -15,12 +15,11 @@ The Oakwood Toolbox makes managing your development tools almost effortless! Hig
 - Update packages automatically
 
 
-Why Oakwood Toolbox
--------------------
+### Why Oakwood Toolbox
+
 Save time and effort maintaining your macOS, by downloading all apps and cli tools needed for development enviroment.
 
-Installation
-------------
+### Installation
 
 #### ⚠️ Disclaimer! ⚠️
 **DO NOT** just run the `installer` snippet if you do not fully understand [what it does](./installer.sh)!
@@ -35,7 +34,7 @@ To set up the `oakwood macOS toolbox`, run the appropriate snippet in the termin
 
 That's it! 🎉 wait for the magic 😍
 
-License
--------
+### License
+
 Copyright © 2020 Oakwood
 Licensed under the MIT [`license`](LICENSE).
