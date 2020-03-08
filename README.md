@@ -35,14 +35,15 @@ To set up the `oakwood macOS toolbox`, run the appropriate snippet in the termin
 That's it! 🎉. When `installer` is run, you are prompted to choose one option from the list as seen below:
 
 ```bash
-    What you want to do?
+		What you want to do?
 
-    1) All                      							5) Bootstrap macOS Environment (Apps,CLI Tools, Nodejs, NVM)
-    2) Install Xcode Command Line Tools				6) Install Git and Setup SSH
-    3) Install Homebrew    										7) Quit
-    4) Clone Oakwoods macOS Toolbox repo
+		1) All                                5) Bootstrap macOS Environment (Apps,CLI Tools, Nodejs, NVM)
+		2) Install Xcode Command Line Tools   6) Install Git and Setup SSH
+		3) Install Homebrew                   7) Quit
+		4) Clone Oakwoods macOS Toolbox repo
 
-    Enter your choice (must be a number):               # Choose a number
+		# Choose a number
+		Enter your choice (must be a number):	
 ```
 The installer attempts to only select relevant script based on your choice. Say you choose `1` for `All`, then you wait for the magic to happen 😍
 
