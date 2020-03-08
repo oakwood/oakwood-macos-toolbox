@@ -146,6 +146,11 @@ print_on_finish_header() {
     print_in_green '                            |__/      |__/       \______/                                                    \______/           \n\n\n'
 }
 
+ask() {
+	print_question "$1"
+	read -r
+}
+
 ask_for_confirmation() {
     print_question "$1 (y/n) "
     read -r -n 1
