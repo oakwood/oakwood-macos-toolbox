@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -r GITHUB_REPOSITORY="oakwood/oakwood-macos-toolbox"
 declare -r GITHUB_REPO_URL_BASE="https://github.com/$GITHUB_REPOSITORY"
