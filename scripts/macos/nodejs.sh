@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
-    && . "./utils.sh"
+    && . "../utils.sh"
 
 declare -r NVM_DIRECTORY="$HOME/.nvm"
 declare -r NVM_GIT_REPO_URL="https://github.com/creationix/nvm.git"
