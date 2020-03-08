@@ -146,12 +146,12 @@ install_package_manager() {
 }
 
 clone_oakwood_macos_toolbox_repo() {
-	print_question "Trying to detect if Oakwwd's macOS Toolbox is installed in $OAKWOOD_TOOLBOX..."
+	print_info "Trying to detect if Oakwood's macOS Toolbox is installed in $OAKWOOD_TOOLBOX..."
 
 	if [ ! -d $OAKWOOD_TOOLBOX ]; then
 		print_info "Seems like you don't have Oakwood's macOS Toolbox clone!"
 
-		ask_for_confirmation "Do you agree to proceed with Oakwood's macOS Toolbox installation?"
+		ask_for_confirmation "Do you agree to proceed with Oakwood's macOS Toolbox clone?"
 
 		if ! answer_is_yes; then
 			return
