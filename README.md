@@ -2,6 +2,9 @@
 
 [![License](https://img.shields.io/github/license/oakwood/oakwood-macos-toolbox)](https://github.com/oakwood/oakwood-macos-toolbox/blob/master/LICENSE)
 
+> Manage your tools the easy way
+
+
 Installation
 ------------
 
@@ -10,11 +13,11 @@ Installation
 
 To set up the `oakwood macOS toolbox`, run the appropriate snippet in the terminal:
 
-| Downloader | Snippet                                                                                                                                 |
-| :--------- | :--------------------------------------------------------------------------------------------------------                               |
-| `curl`     | `bash -c "$(curl -fsSL https://raw.githubusercontent.com/oakwood/oakwood-macos-toolbox/master/installer.sh)"`                           |
-| `wget`     | `bash -c "$(wget https://raw.githubusercontent.com/oakwood/oakwood-macos-toolbox/master/installer.sh -O -)"`                            |
-| `git`      | `git clone git@github.com:oakwood/oakwood-macos-toolbox.git ~/oakwood-macos-toolbox && source ~/oakwood-macos-toolbox/installer.sh`     |
+| Downloader | Snippet                                                                                                                             |
+| :--------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| `curl`     | `bash -c "$(curl -fsSL https://raw.githubusercontent.com/oakwood/oakwood-macos-toolbox/master/installer.sh)"`                       |
+| `wget`     | `bash -c "$(wget https://raw.githubusercontent.com/oakwood/oakwood-macos-toolbox/master/installer.sh -O -)"`                        |
+| `git`      | `git clone git@github.com:oakwood/oakwood-macos-toolbox.git ~/oakwood-macos-toolbox && source ~/oakwood-macos-toolbox/installer.sh` |
 
 That's it! 🎉, then the process does a few things:
 
